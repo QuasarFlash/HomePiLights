@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:mqtt_client/mqtt_client.dart' as mqtt;
 import 'package:responsive_grid/responsive_grid.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(new MyApp());
@@ -216,8 +217,6 @@ class _MyHomePageState extends State<MyHomePage> {
           'EXAMPLE::ERROR Mosquitto client connection failed - disconnecting, status is ${client.connectionStatus}');
       client.disconnect();
     }
-
-
   }
 
   /// The subscribed callback
